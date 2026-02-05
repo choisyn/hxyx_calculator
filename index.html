@@ -1,0 +1,367 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="游戏道具兑换计算器 - 支持S、SS、SSS道具兑换计算">
+    <title>道具兑换计算器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>道具兑换计算器</h1>
+        <p style="color: red;">提示:本计算结果仅供参考，大活动的道具s、ss、sss出货比率为90:9:1，现实会有些许波动，请以实际情况为准！</p>
+        
+        <!-- 初始道具设置区 -->
+        <div class="exchange-section">
+            <h2>初始道具设置</h2>
+            <div class="initial-props-grid">
+                <div class="initial-prop-card">
+                    <label for="initialS">S道具</label>
+                    <input type="number" id="initialS" class="initial-input" value="0" min="0">
+                </div>
+                <div class="initial-prop-card">
+                    <label for="initialSS">SS道具</label>
+                    <input type="number" id="initialSS" class="initial-input" value="0" min="0">
+                </div>
+                <div class="initial-prop-card">
+                    <label for="initialSSS">SSS道具</label>
+                    <input type="number" id="initialSSS" class="initial-input" value="0" min="0">
+                </div>
+                <div class="initial-prop-card">
+                    <label for="initialBigEvent">大活动掉落物</label>
+                    <input type="number" id="initialBigEvent" class="initial-input" value="0" min="0">
+                    <small>按S:SS:SSS=90:9:1比例转换</small>
+                </div>
+            </div>
+        </div>
+        <pre style="color: rgb(52, 58, 122);font-size: 20px;">按键提示：
+  “0”键为将该选项清0；
+  第二个数字键为小活动的最大兑换量；
+  第三个带“+”号的按钮为增加数量；
+  “MAX”键为大活动的最大兑换数量</pre>
+        <!-- S道具兑换区域 -->
+        <div class="exchange-section">
+            <h2>S道具兑换</h2>
+            <div class="exchange-grid">
+                <div class="item-card">
+                    <img src="./image/勇气宝石.jpg" alt="[s]勇气宝石×6000">
+                    <p>勇气宝石×6000</p>
+                    <p>消耗：S道具×200</p>
+                    <div class="controls">
+                        <!-- 输入框和按钮的容器 -->
+                        <div class="input-with-button">
+                            <input type="number" min="0" max="9999" class="exchange-input" data-type="s" data-cost="200" data-max="375" placeholder="输入兑换的数量">
+                            <button onclick="addAmount(this, 250)">+250</button>
+                        </div>
+                        <!--<input type="number" min="0" max="9999" class="exchange-input" data-type="s" data-cost="200" data-max="375" placeholder="输入兑换的数量">-->
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 250)">250</button>
+                            <button onclick="addAmount(this, 100)">+100</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="./image/超级英雄之魂.jpg" alt="[s]超级英雄之魂×100">
+                    <p>超级英雄之魂×100</p>
+                    <p>消耗：S道具×100</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="9999" class="exchange-input" data-type="s" data-cost="100" data-max="600" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 400)">400</button>
+                            <button onclick="addAmount(this, 100)">+100</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="./image/超级装备之魂.jpg" alt="[s]超级装备之魂×100">
+                    <p>超级装备之魂×100</p>
+                    <p>消耗：S道具×100</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="9999" class="exchange-input" data-type="s" data-cost="100" data-max="600" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 400)">400</button>
+                            <button onclick="addAmount(this, 100)">+100</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="./image/超级首饰之魂.jpg" alt="[s]超级首饰之魂×100">
+                    <p>超级装备之魂×100</p>
+                    <p>消耗：S道具×100</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="9999" class="exchange-input" data-type="s" data-cost="100" data-max="600" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 400)">400</button>
+                            <button onclick="addAmount(this, 100)">+100</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="./image/魔界币.jpg" alt="[s]魔界币×500">
+                    <p>魔界币×500</p>
+                    <p>消耗：S道具×100</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="9999" class="exchange-input" data-type="s" data-cost="100" data-max="1498" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 999)">999</button>
+                            <button onclick="addAmount(this, 100)">+100</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="./image/高级附魔石.jpg" alt="[s]高级附魔石×1000">
+                    <p>高级附魔石×1000</p>
+                    <p>消耗：S道具×100</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="9999" class="exchange-input" data-type="s" data-cost="100" data-max="750" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 500)">500</button>
+                            <button onclick="addAmount(this, 100)">+100</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="./image/幸运福袋.jpg" alt="[s]幸运福袋×100">
+                    <p>幸运福袋×100</p>
+                    <p>消耗：S道具×100</p>
+                    <div class="controls">
+                        <div class="input-with-button">
+                            <input type="number" min="0" max="9999" class="exchange-input" data-type="s" data-cost="100" data-max="2250" placeholder="输入兑换的数量">
+                            <button onclick="addAmount(this, 999)">+999</button>
+                        </div>
+                        
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 999)">999</button>
+                            <button onclick="addAmount(this, 100)">+100</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="./image/福蛋.jpg" alt="[s]福蛋×1">
+                    <p>福蛋×1</p>
+                    <p>消耗：S道具×999</p>
+                    <div class="controls">
+                        <div class="input-with-button">
+                            <input type="number" min="0" max="999" class="exchange-input" data-type="s" data-cost="999" data-max="99" placeholder="输入兑换的数量">
+                            <button onclick="addAmount(this, 99)">+99</button>
+                        </div>
+                        <!--<input type="number" min="0" max="999" class="exchange-input" data-type="s" data-cost="999" data-max="99" placeholder="输入兑换的数量">-->
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 99)">99</button>
+                            <button onclick="addAmount(this, 10)">+10</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 其他S道具兑换项类似结构... -->
+            </div>
+        </div>
+
+        <!-- SS道具兑换区域 -->
+        <div class="exchange-section">
+            <h2>SS道具兑换</h2>
+            <!-- SS道具兑换项... -->
+            <div class="exchange-grid">
+                <div class="item-card">
+                    <img src="./image/神奇硬币.jpg" alt="[ss]神奇硬币×2">
+                    <p>[ss]神奇硬币×2</p>
+                    <p>消耗：SS道具×1088</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="999" class="exchange-input" data-type="ss" data-cost="1088" data-max="10" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 5)">5</button>
+                            <button onclick="addAmount(this, 1)">+1</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="./image/高级附魔石.jpg" alt="[ss]高级附魔石×50000">
+                    <p>[ss]高级附魔石×50000</p>
+                    <p>消耗：SS道具×999</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="999" class="exchange-input" data-type="ss" data-cost="999" data-max="10" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 5)">5</button>
+                            <button onclick="addAmount(this, 1)">+1</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="./image/神奇四星珠子.jpg" alt="[ss]神奇四星珠子×1">
+                    <p>[ss]神奇四星珠子×1</p>
+                    <p>消耗：SS道具×1088</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="999" class="exchange-input" data-type="ss" data-cost="1088" data-max="10" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 5)">5</button>
+                            <button onclick="addAmount(this, 1)">+1</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="./image/幸运福袋.jpg" alt="[ss]幸运福袋×100">
+                    <p>[ss]幸运福袋×100</p>
+                    <p>消耗：SS道具×10</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="9999" class="exchange-input" data-type="ss" data-cost="10" data-max="500" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 100)">100</button>
+                            <button onclick="addAmount(this, 100)">+100</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 其他SS道具兑换项类似结构... -->
+            </div>
+        </div>
+
+        <!-- SSS道具兑换区域 -->
+        <div class="exchange-section">
+            <h2>SSS道具兑换</h2>
+            <!-- SSS道具兑换项... -->
+            <div class="exchange-grid">
+                <div class="item-card">
+                    <img src="./image/归来·熊王阿瑞斯碎片.jpg" alt="[sss]归来·熊王阿瑞斯碎片×200">
+                    <p>[sss]归来·熊王阿瑞斯碎片×200</p>
+                    <p>消耗：SSS道具×888</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="1" class="exchange-input" data-type="sss" data-cost="888" data-max="1" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 1)">1</button>
+                            <button onclick="addAmount(this, 1)">+1</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="./image/八星幻想装备箱.jpg" alt="[sss]八星幻想装备箱×1">
+                    <p>[sss]八星幻想装备箱×1</p>
+                    <p>消耗：SSS道具×888</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="1" class="exchange-input" data-type="sss" data-cost="888" data-max="1" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 1)">1</button>
+                            <button onclick="addAmount(this, 1)">+1</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="./image/神奇六星珠子.jpg" alt="[sss]神奇六星珠子×1">
+                    <p>[sss]神奇六星珠子×1</p>
+                    <p>消耗：SSS道具×88</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="10" class="exchange-input" data-type="sss" data-cost="88" data-max="10" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 100)">100</button>
+                            <button onclick="addAmount(this, 100)">+100</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="./image/幻想银币.jpg" alt="[sss]幻想银币×200">
+                    <p>[sss]幻想银币×200</p>
+                    <p>消耗：SSS道具×1</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="999" class="exchange-input" data-type="sss" data-cost="1" data-max="999" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 100)">100</button>
+                            <button onclick="addAmount(this, 100)">+100</button>
+                            <button onclick="setMax(this)">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 其他S道具兑换项类似结构... -->
+            </div>
+        </div>
+
+        <!-- 特殊兑换区域 -->
+        <div class="exchange-section">
+            <h2>特殊兑换</h2>
+            <div class="exchange-grid">
+                <div class="item-card special-exchange">
+                    <img src="./image/神级宝箱.jpg" alt="[s+]神级远征宝箱(新)×1">
+                    <p>[s+]神级远征宝箱(新)×1</p>
+                    <p class="requirements">需要: S道具×88888 +  SS道具×8888 + SSS道具×888</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="1" 
+                            class="exchange-input" 
+                            data-type="special"
+                            data-s-cost="88888"
+                            data-ss-cost="8888"
+                            data-sss-cost="888"
+                            data-max="1" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 1)">1</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="item-card special-exchange">
+                    <img src="./image/永恒万能碎片.jpg" alt="[s+]永恒万能碎片×5">
+                    <p>[s+]永恒万能碎片×5</p>
+                    <p class="requirements">需要: S道具×88888 +  SS道具×8888 + SSS道具×888</p>
+                    <div class="controls">
+                        <input type="number" min="0" max="1" 
+                            class="exchange-input" 
+                            data-type="special"
+                            data-s-cost="88888"
+                            data-ss-cost="8888"
+                            data-sss-cost="888"
+                            data-max="1" placeholder="输入兑换的数量">
+                        <div class="quick-buttons">
+                            <button onclick="setAmount(this, 0)">0</button>
+                            <button onclick="setAmount(this, 1)">1</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <button id="calculateBtn" class="calculate-btn">计算所需体力</button> -->
+        <div class="button-group">
+            <button id="calculateBtn" class="calculate-btn">计算所需体力</button>
+            <button id="resetBtn" class="reset-btn">重置</button>
+            <button id="clearCacheBtn" class="clear-cache-btn">清除缓存</button>
+            <!-- <button id="resetBtn" class="calculate-btn">重置</button> -->
+        </div>
+        
+        <div id="result" class="result-area">
+            <h3>计算结果：</h3>
+            <p id="bigEventResult"></p>
+            <p id="smallEventResult"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

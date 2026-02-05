@@ -1,0 +1,624 @@
+/* styles.css */
+/* 基础重置和全局样式 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* 容器布局 */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: white;
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* 标题样式 */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+}
+
+h2 {
+    color: #34495e;
+    margin-bottom: 1rem;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+/* 提示文本样式 */
+.container > p {
+    background: linear-gradient(135deg, #e47878, #fec4b0);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.container > pre {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* 兑换区域 */
+.exchange-section {
+    margin-bottom: 2rem;
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* 响应式网格布局 */
+.exchange-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* 道具卡片 */
+.item-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.item-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    pointer-events: none;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+.item-card img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+/* 特殊兑换卡片 */
+.special-exchange {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.special-exchange .requirements {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.9);
+    margin: 0.5rem 0;
+    background: rgba(0,0,0,0.2);
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+
+/* 控制区域 */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* 输入框样式 */
+.exchange-input {
+    width: 100%;
+    max-width: 200px;
+    height: 2.5rem;
+    margin: 0 auto;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.9);
+    color: #333;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.exchange-input:focus {
+    outline: none;
+    border-color: #fff;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+}
+
+/* 输入框与按钮组合 */
+.input-with-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.input-with-button .exchange-input {
+    flex: 1;
+    min-width: 120px;
+}
+
+.input-with-button button {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.input-with-button button:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-1px);
+}
+
+/* 快捷按钮 */
+.quick-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.quick-buttons button {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 50px;
+}
+
+.quick-buttons button:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-1px);
+}
+
+/* 主要按钮组 */
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem auto;
+    flex-wrap: wrap;
+}
+
+.calculate-btn, .reset-btn, .clear-cache-btn {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 140px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.calculate-btn {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+}
+
+.calculate-btn:hover {
+    background: linear-gradient(135deg, #45a049, #3d8b40);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    color: white;
+}
+
+.reset-btn:hover {
+    background: linear-gradient(135deg, #d32f2f, #c62828);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.clear-cache-btn {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+    color: white;
+}
+
+.clear-cache-btn:hover {
+    background: linear-gradient(135deg, #f57c00, #ef6c00);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* 初始道具设置区样式 */
+.initial-props-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.initial-prop-card {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.initial-prop-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.initial-prop-card label {
+    display: block;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.initial-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.initial-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.initial-prop-card small {
+    display: block;
+    color: #6c757d;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    line-height: 1.2;
+}
+
+/* 结果区域 */
+.result-area {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    border: 1px solid #dee2e6;
+}
+
+.result-area h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.result-area p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    color: #495057;
+}
+
+/* 文本样式 */
+p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* 响应式设计 */
+
+/* 平板端 (768px - 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0.75rem;
+    }
+    
+    .exchange-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .initial-props-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.75rem;
+    }
+    
+    .initial-prop-card {
+        padding: 0.75rem;
+    }
+    
+    .item-card {
+        padding: 1.25rem;
+    }
+    
+    .exchange-section {
+        padding: 1.25rem;
+    }
+}
+
+/* 手机端 (480px - 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: 0.5rem;
+        margin: 0;
+        min-height: 100vh;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    h2 {
+        font-size: 1.4rem;
+    }
+    
+    .exchange-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 0.75rem;
+    }
+    
+    .initial-props-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .initial-prop-card {
+        padding: 0.5rem;
+    }
+    
+    .initial-prop-card label {
+        font-size: 0.8rem;
+    }
+    
+    .initial-input {
+        font-size: 0.9rem;
+        padding: 0.4rem;
+    }
+    
+    .item-card {
+        padding: 1rem;
+    }
+    
+    .item-card img {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .exchange-section {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    
+    .calculate-btn, .reset-btn, .clear-cache-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .container > pre {
+        font-size: 0.85rem;
+        padding: 0.75rem;
+    }
+}
+
+/* 小屏手机端 (320px - 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0.25rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+    
+    .exchange-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .initial-props-grid {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+    }
+    
+    .initial-prop-card {
+        padding: 0.4rem;
+    }
+    
+    .initial-prop-card label {
+        font-size: 0.75rem;
+    }
+    
+    .initial-input {
+        font-size: 0.8rem;
+        padding: 0.3rem;
+    }
+    
+    .initial-prop-card small {
+        font-size: 0.65rem;
+    }
+    
+    .item-card {
+        padding: 0.75rem;
+    }
+    
+    .item-card img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .exchange-section {
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .quick-buttons {
+        gap: 0.25rem;
+    }
+    
+    .quick-buttons button {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+        min-width: 40px;
+    }
+    
+    .exchange-input {
+        max-width: 150px;
+        height: 2rem;
+        font-size: 0.9rem;
+    }
+    
+    .input-with-button {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .input-with-button .exchange-input {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .container > pre {
+        font-size: 0.75rem;
+        padding: 0.5rem;
+    }
+    
+    .special-exchange .requirements {
+        font-size: 0.8rem;
+    }
+}
+
+/* 超小屏设备 (最大320px) */
+@media (max-width: 320px) {
+    .container {
+        padding: 0.125rem;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+    }
+    
+    h2 {
+        font-size: 1rem;
+    }
+    
+    .initial-props-grid {
+        gap: 0.3rem;
+    }
+    
+    .initial-prop-card {
+        padding: 0.3rem;
+    }
+    
+    .initial-prop-card label {
+        font-size: 0.7rem;
+    }
+    
+    .initial-input {
+        font-size: 0.75rem;
+        padding: 0.25rem;
+    }
+    
+    .initial-prop-card small {
+        font-size: 0.6rem;
+    }
+    
+    .item-card {
+        padding: 0.5rem;
+    }
+    
+    .item-card img {
+        width: 2rem;
+        height: 2rem;
+    }
+    
+    .item-card p {
+        font-size: 0.75rem;
+        margin: 0.2rem 0;
+    }
+    
+    .quick-buttons {
+        gap: 0.1rem;
+    }
+    
+    .quick-buttons button {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
+        min-width: 35px;
+    }
+    
+    .exchange-input {
+        font-size: 0.75rem;
+        padding: 0.25rem;
+    }
+    
+    .calculate-btn, .reset-btn, .clear-cache-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+  
