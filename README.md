@@ -1,4 +1,4 @@
-![image](https://github.com/choisyn/hxyx_calculator/tree/main/huonv.webp)
+![image](https://github.com/choisyn/hxyx_calculator/blob/main/huonv.webp)
 
 # 幻想英雄 · 道具兑换计算器
 
