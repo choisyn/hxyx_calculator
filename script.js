@@ -17,7 +17,7 @@ function setMax(button) {
 }
 
 function calculateRequiredStamina() {
-    // 获取初始道具数量
+    // 获取额外道具数量
     const initialS = parseInt(document.getElementById('initialS').value || 0);
     const initialSS = parseInt(document.getElementById('initialSS').value || 0);
     const initialSSS = parseInt(document.getElementById('initialSSS').value || 0);
@@ -28,7 +28,7 @@ function calculateRequiredStamina() {
     const bigEventSS = Math.floor(initialBigEvent * 0.09);
     const bigEventSSS = Math.floor(initialBigEvent * 0.01);
     
-    // 计算总的初始道具数量（包含转换后的大活动掉落物）
+    // 计算总的额外道具数量（包含转换后的大活动掉落物）
     const totalInitialS = initialS + bigEventS;
     const totalInitialSS = initialSS + bigEventSS;
     const totalInitialSSS = initialSSS + bigEventSSS;
@@ -70,7 +70,7 @@ function calculateRequiredStamina() {
     const originalTotalSS = totalSS;
     const originalTotalSSS = totalSSS;
     
-    // 减去初始道具数量，计算实际还需要的道具数量
+    // 减去额外道具数量，计算实际还需要的道具数量
     totalS = Math.max(0, totalS - totalInitialS);
     totalSS = Math.max(0, totalSS - totalInitialSS);
     totalSSS = Math.max(0, totalSSS - totalInitialSSS);
@@ -108,9 +108,9 @@ function calculateRequiredStamina() {
     `扫荡统计：${bigEventResult.sweepInfo.rounds}轮` + 
     (bigEventResult.sweepInfo.remaining > 0 ? ` + ${bigEventResult.sweepInfo.remaining}次战斗` : '') + 
     `<br>获得道具：<br>` +
-    `S道具: ${bigEventResult.obtained.S}个 (剩余: ${bigEventResult.remaining.S}个) [初始: ${totalInitialS}个]<br>` +
-    `SS道具: ${bigEventResult.obtained.SS}个 (剩余: ${bigEventResult.remaining.SS}个) [初始: ${totalInitialSS}个]<br>` +
-    `SSS道具: ${bigEventResult.obtained.SSS}个 (剩余: ${bigEventResult.remaining.SSS}个) [初始: ${totalInitialSSS}个]<br>` +
+    `S道具: ${bigEventResult.obtained.S}个 (剩余: ${bigEventResult.remaining.S}个) [额外: ${totalInitialS}个]<br>` +
+    `SS道具: ${bigEventResult.obtained.SS}个 (剩余: ${bigEventResult.remaining.SS}个) [额外: ${totalInitialSS}个]<br>` +
+    `SSS道具: ${bigEventResult.obtained.SSS}个 (剩余: ${bigEventResult.remaining.SSS}个) [额外: ${totalInitialSSS}个]<br>` +
     (itemsHtml ? `<br>兑换道具统计：<br>${itemsHtml}` : '');
 
     
@@ -120,7 +120,7 @@ function calculateRequiredStamina() {
     `扫荡统计：${smallEventStamina.sweepInfo.rounds}轮` +
     (smallEventStamina.sweepInfo.remaining > 0 ? ` + ${smallEventStamina.sweepInfo.remaining}次战斗` : '') +
     `<br>获得道具：<br>` +
-    `S道具: ${smallEventStamina.obtained.S}个 (剩余: ${smallEventStamina.remaining.S}个) [初始: ${totalInitialS}个]<br>` +
+    `S道具: ${smallEventStamina.obtained.S}个 (剩余: ${smallEventStamina.remaining.S}个) [额外: ${totalInitialS}个]<br>` +
     (itemsHtml ? `<br>兑换道具统计：<br>${itemsHtml}` : '');
 }
 
@@ -149,7 +149,7 @@ function calculateBigEventStamina(totalS, totalSS, totalSSS, originalTotalS, ori
      const obtainedSS = Math.floor(totalA * 0.09);
      const obtainedSSS = Math.floor(totalA * 0.01);
      
-     // 计算剩余的道具数量：获得数量 - 原始需求数量 + 初始道具数量
+     // 计算剩余的道具数量：获得数量 - 原始需求数量 + 额外道具数量
      const remainingS = obtainedS - originalTotalS + totalInitialS;
      const remainingSS = obtainedSS - originalTotalSS + totalInitialSS;
      const remainingSSS = obtainedSSS - originalTotalSSS + totalInitialSSS;
@@ -217,7 +217,7 @@ function resetAllInputs() {
         input.value = 0;
     });
     
-    // 重置初始道具设置输入框为0
+    // 重置额外道具设置输入框为0
     document.querySelectorAll('.initial-input').forEach(input => {
         input.value = 0;
     });
@@ -264,3 +264,57 @@ function clearCacheAndReload() {
         }
     }
 }
+
+// 侧栏与页面切换逻辑（单页多视图）
+function toggleSidebar(open) {
+    const sidebar = document.getElementById('sidebar');
+    const toc = document.getElementById('tocToggle');
+    if (!sidebar || !toc) return;
+    if (typeof open === 'undefined') open = !sidebar.classList.contains('open');
+    if (open) {
+        sidebar.classList.add('open');
+        document.body.classList.add('sidebar-open', 'overlay-visible');
+        sidebar.setAttribute('aria-hidden', 'false');
+        toc.setAttribute('aria-expanded', 'true');
+    } else {
+        sidebar.classList.remove('open');
+        document.body.classList.remove('sidebar-open', 'overlay-visible');
+        sidebar.setAttribute('aria-hidden', 'true');
+        toc.setAttribute('aria-expanded', 'false');
+    }
+}
+
+function closeSidebar() { toggleSidebar(false); }
+
+function selectCalculator(id) {
+    // 隐藏所有视图，显示目标视图
+    document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+    const view = document.getElementById('view-' + id);
+    if (view) view.style.display = '';
+    // 自动收起侧栏
+    closeSidebar();
+}
+
+// 绑定触发按钮与外部点击收起
+document.addEventListener('DOMContentLoaded', () => {
+    const toc = document.getElementById('tocToggle');
+    if (toc) {
+        toc.addEventListener('click', (e) => { e.stopPropagation(); toggleSidebar(); });
+    }
+
+    // 点击侧栏外部收起侧栏
+    document.addEventListener('click', (e) => {
+        const sidebar = document.getElementById('sidebar');
+        const toc = document.getElementById('tocToggle');
+        if (!sidebar) return;
+        if (sidebar.classList.contains('open')) {
+            if (!sidebar.contains(e.target) && e.target !== toc) closeSidebar();
+        }
+    });
+
+    // ESC 键收起侧栏
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSidebar(); });
+
+    // 额外显示道具兑换计算器视图
+    selectCalculator('exchange');
+});

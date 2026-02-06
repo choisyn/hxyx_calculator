@@ -9,13 +9,35 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <!-- App 包裹：侧栏 + 主内容 -->
+    <div id="app">
+        <!-- 可折叠菜单（覆盖式） -->
+        <aside id="sidebar" class="sidebar" aria-hidden="true">
+            <div class="sidebar-header">
+                <h3>计算器目录</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><button class="nav-item" data-view="exchange" onclick="selectCalculator('exchange')">道具兑换计算器</button></li>
+                    <li><button class="nav-item" data-view="evolution" onclick="selectCalculator('evolution')">进化材料计算器</button></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">点击外部或选择条目自动收起</div>
+        </aside>
+
+        <!-- 底部左下角触发按钮 -->
+        <button id="tocToggle" class="toc-toggle" aria-expanded="false" aria-controls="sidebar">目录</button>
+
+        <!-- 主内容区：多个视图按 id 切换显示 -->
+        <main id="main-content">
+            <div id="view-exchange" class="view">
+        <div class="container">
         <h1>道具兑换计算器</h1>
         <p style="color: red;">提示:本计算结果仅供参考，大活动的道具s、ss、sss出货比率为90:9:1，现实会有些许波动，请以实际情况为准！</p>
         
-        <!-- 初始道具设置区 -->
+        <!-- 额外道具设置区 -->
         <div class="exchange-section">
-            <h2>初始道具设置</h2>
+            <h2>额外道具设置</h2>
             <div class="initial-props-grid">
                 <div class="initial-prop-card">
                     <label for="initialS">S道具</label>
@@ -30,9 +52,9 @@
                     <input type="number" id="initialSSS" class="initial-input" value="0" min="0">
                 </div>
                 <div class="initial-prop-card">
-                    <label for="initialBigEvent">大活动掉落物</label>
+                    <label for="initialBigEvent">大活动掉落箱子</label>
                     <input type="number" id="initialBigEvent" class="initial-input" value="0" min="0">
-                    <small>按S:SS:SSS=90:9:1比例转换</small>
+                    <small>自动按S:SS:SSS=90:9:1比例转换</small>
                 </div>
             </div>
         </div>
@@ -362,6 +384,23 @@
             <p id="smallEventResult"></p>
         </div>
     </div>
+            </div> <!-- /view-exchange.container -->
+
+            <!-- 进化材料计算器占位视图（暂未实现功能） -->
+            <div id="view-evolution" class="view" style="display:none; padding:2rem;">
+                <div class="container">
+                    <h1>进化材料计算器</h1>
+                    <p>该页面为占位视图，功能尚未实现。开发计划已记录于开发文档。</p>
+                    <div class="exchange-section">
+                        <h2>快速说明</h2>
+                        <p>待补充：进化材料种类、合成配方、来源与消耗等。</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

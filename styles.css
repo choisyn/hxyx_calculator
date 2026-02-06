@@ -9,8 +9,8 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f5f5f5;
+    color: #111;
+    background-color: #f8f9fa;
 }
 
 /* 容器布局 */
@@ -18,7 +18,7 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 1rem;
-    background-color: white;
+    background-color: #ffffff;
     min-height: 100vh;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
@@ -26,40 +26,42 @@ body {
 /* 标题样式 */
 h1 {
     text-align: center;
-    color: #2c3e50;
+    color: #111111;
     margin-bottom: 1.5rem;
     font-size: clamp(1.5rem, 4vw, 2.5rem);
     font-weight: 700;
 }
 
 h2 {
-    color: #34495e;
-    margin-bottom: 1rem;
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    border-bottom: 3px solid #3498db;
+    color: #222222;
+    margin-bottom: 0.75rem;
+    font-size: clamp(1.05rem, 2.6vw, 1.45rem);
+    border-bottom: 2px solid #e9ecef;
     padding-bottom: 0.5rem;
 }
 
 /* 提示文本样式 */
 .container > p {
-    background: linear-gradient(135deg, #e47878, #fec4b0);
-    color: white;
-    padding: 1rem;
+    background: #ffffff;
+    color: #333;
+    padding: 0.9rem 1rem;
     border-radius: 8px;
     margin-bottom: 1rem;
     font-weight: 500;
     text-align: center;
+    border: 1px solid #ececec;
 }
 
 .container > pre {
-    background: linear-gradient(135deg, #74b9ff, #0984e3);
-    color: white;
+    background: #fbfbfb;
+    color: #333;
     padding: 1rem;
     border-radius: 8px;
     margin-bottom: 2rem;
     font-size: clamp(0.8rem, 2vw, 1rem);
     white-space: pre-wrap;
     word-wrap: break-word;
+    border: 1px solid #f0f0f0;
 }
 
 /* 兑换区域 */
@@ -81,32 +83,23 @@ h2 {
 
 /* 道具卡片 */
 .item-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: none;
-    padding: 1.5rem;
-    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #ececec;
+    padding: 1.25rem;
+    border-radius: 10px;
     text-align: center;
-    color: white;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-    transition: all 0.3s ease;
+    color: #111;
+    box-shadow: 0 6px 14px rgba(15,15,15,0.04);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
     position: relative;
     overflow: hidden;
 }
 
-.item-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
-    pointer-events: none;
-}
+.item-card::before { content: ''; }
 
 .item-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(10,10,10,0.06);
 }
 
 .item-card img {
@@ -115,21 +108,23 @@ h2 {
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 0.5rem;
-    border: 2px solid rgba(255,255,255,0.3);
+    border: 1px solid #efefef;
 }
 
 /* 特殊兑换卡片 */
 .special-exchange {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background: linear-gradient(180deg,#fff,#fafafa);
+    border: 1px solid #efecec;
 }
 
 .special-exchange .requirements {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.9);
+    font-size: 0.92rem;
+    color: #333;
     margin: 0.5rem 0;
-    background: rgba(0,0,0,0.2);
+    background: #fafafa;
     padding: 0.5rem;
     border-radius: 6px;
+    border: 1px solid #f0f0f0;
 }
 
 /* 控制区域 */
@@ -150,19 +145,19 @@ h2 {
     margin: 0 auto;
     padding: 0.5rem;
     font-size: 1rem;
-    border: 2px solid rgba(255,255,255,0.3);
+    border: 1px solid #e6e6e6;
     border-radius: 6px;
-    background: rgba(255,255,255,0.9);
-    color: #333;
+    background: #ffffff;
+    color: #222;
     text-align: center;
     transition: all 0.3s ease;
 }
 
 .exchange-input:focus {
     outline: none;
-    border-color: #fff;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+    border-color: #d0d6db;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(200,200,200,0.12);
 }
 
 /* 输入框与按钮组合 */
@@ -180,18 +175,18 @@ h2 {
 }
 
 .input-with-button button {
-    background: rgba(255,255,255,0.2);
-    color: white;
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 0.5rem 0.75rem;
+    background: #f7f7f8;
+    color: #222;
+    border: 1px solid #e9eaec;
+    padding: 0.48rem 0.7rem;
     border-radius: 6px;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.12s ease, background 0.12s ease;
 }
 
 .input-with-button button:hover {
-    background: rgba(255,255,255,0.3);
+    background: #efefef;
     transform: translateY(-1px);
 }
 
@@ -204,19 +199,19 @@ h2 {
 }
 
 .quick-buttons button {
-    background: rgba(255,255,255,0.2);
-    color: white;
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 0.5rem 0.75rem;
+    background: #f5f6f7;
+    color: #222;
+    border: 1px solid #e9eaec;
+    padding: 0.45rem 0.7rem;
     border-radius: 6px;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.12s ease, background 0.12s ease;
     min-width: 50px;
 }
 
 .quick-buttons button:hover {
-    background: rgba(255,255,255,0.3);
+    background: #ededed;
     transform: translateY(-1px);
 }
 
@@ -236,42 +231,42 @@ h2 {
     border: none;
     border-radius: 8px;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all 0.18s ease;
     min-width: 140px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .calculate-btn {
-    background: linear-gradient(135deg, #4CAF50, #45a049);
-    color: white;
+    background: #111111;
+    color: #ffffff;
 }
 
 .calculate-btn:hover {
-    background: linear-gradient(135deg, #45a049, #3d8b40);
+    opacity: 0.95;
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 18px rgba(10,10,10,0.12);
 }
 
 .reset-btn {
-    background: linear-gradient(135deg, #f44336, #d32f2f);
-    color: white;
+    background: #6c757d;
+    color: #ffffff;
 }
 
 .reset-btn:hover {
-    background: linear-gradient(135deg, #d32f2f, #c62828);
+    opacity: 0.95;
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 18px rgba(10,10,10,0.06);
 }
 
 .clear-cache-btn {
-    background: linear-gradient(135deg, #ff9800, #f57c00);
-    color: white;
+    background: #adb5bd;
+    color: #111;
 }
 
 .clear-cache-btn:hover {
-    background: linear-gradient(135deg, #f57c00, #ef6c00);
+    opacity: 0.98;
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 18px rgba(10,10,10,0.04);
 }
 
 /* 初始道具设置区样式 */
@@ -283,25 +278,23 @@ h2 {
 }
 
 .initial-prop-card {
-    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-    padding: 1rem;
+    background: #ffffff;
+    padding: 0.9rem;
     border-radius: 8px;
-    border: 2px solid #e9ecef;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    border: 1px solid #eef0f2;
+    box-shadow: 0 2px 6px rgba(10,10,10,0.03);
+    transition: transform 0.12s ease;
     text-align: center;
 }
 
 .initial-prop-card:hover {
-    border-color: var(--primary-color);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
 
 .initial-prop-card label {
     display: block;
     font-weight: 600;
-    color: var(--primary-color);
+    color: #222;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
 }
@@ -332,18 +325,18 @@ h2 {
 
 /* 结果区域 */
 .result-area {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 2rem;
-    border: 1px solid #dee2e6;
+    background: #fbfbfb;
+    padding: 1.25rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(10,10,10,0.03);
+    margin-top: 1.5rem;
+    border: 1px solid #f0f0f0;
 }
 
 .result-area h3 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
+    color: #111;
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
 }
 
 .result-area p {
@@ -360,6 +353,78 @@ p {
 }
 
 /* 响应式设计 */
+
+/* 侧栏与目录按钮样式 */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 300px;
+    max-width: 80%;
+    background: #ffffff;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.12);
+    transform: translateX(-110%);
+    transition: transform 260ms ease;
+    z-index: 1200;
+    padding: 1rem;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar-header h3 {
+    margin-bottom: 0.5rem;
+    color: #111;
+}
+
+.sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
+.sidebar-nav li { margin: 0.25rem 0; }
+.nav-item {
+    width: 100%;
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #222;
+}
+.nav-item:hover { background: #f6f7f8; }
+.sidebar-footer { margin-top: 1rem; font-size: 0.85rem; color: #6c757d; }
+
+/* 目录触发按钮（左下角） */
+.toc-toggle {
+    position: fixed;
+    left: 12px;
+    bottom: 12px;
+    z-index: 1300;
+    background: #111111;
+    color: white;
+    border: none;
+    padding: 0.6rem 0.9rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.16);
+    cursor: pointer;
+}
+
+/* 主视图调整，视图容器内管理显示 */
+.view { display: block; }
+.view[hidden], .view[style*="display:none"] { display: none !important; }
+
+/* 当侧栏打开时阻止页面水平滚动（小屏体验） */
+body.sidebar-open { overflow: hidden; }
+
+/* 轻微遮罩（可选） */
+.overlay-visible::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    z-index: 1100;
+}
 
 /* 平板端 (768px - 1024px) */
 @media (max-width: 1024px) {
