@@ -1,8 +1,10 @@
-<p style="text-align:center;">
-	<img src="https://github.com/choisyn/hxyx_calculator/blob/main/huonv.webp" alt="logo" style="width:140px;max-width:36%;height:auto;display:block;margin:0 auto;">
+<p align="center">
+	<img src="https://github.com/choisyn/hxyx_calculator/raw/main/huonv.webp" alt="logo" style="width:120px;height:auto;">
 </p>
 
-<h1 style="text-align:center;color:#1e6fbf;">幻想英雄计算器</h1>
+<p align="center">
+	<img src="https://github.com/choisyn/hxyx_calculator/raw/main/title.svg" alt="幻想英雄计算器">
+</p>
 
 轻量、可扩展的浏览器端道具兑换工具（Pocket Knight / 幻想英雄）。
 
