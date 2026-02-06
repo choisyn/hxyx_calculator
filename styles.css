@@ -398,16 +398,47 @@ p {
 /* 目录触发按钮（左下角） */
 .toc-toggle {
     position: fixed;
-    left: 12px;
-    bottom: 12px;
+    left: 0;
+    bottom: 0;
     z-index: 1300;
     background: #111111;
     color: white;
     border: none;
-    padding: 0.6rem 0.9rem;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.16);
+    padding: 0.55rem 0.7rem;
+    border-radius: 0 10px 0 0; /* 右上圆角，其他直角 */
+    box-shadow: none;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 44px;
+}
+
+.toc-toggle .hamburger {
+    display: inline-block;
+    width: 20px;
+    height: 14px;
+    position: relative;
+}
+.toc-toggle .hamburger::before,
+.toc-toggle .hamburger::after,
+.toc-toggle .hamburger div {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+}
+.toc-toggle .hamburger::before { top: 0; }
+.toc-toggle .hamburger div { top: 6px; }
+.toc-toggle .hamburger::after { bottom: 0; }
+
+/* 去掉在小屏上的额外偏移，保持紧贴边缘 */
+@media (max-width: 768px) {
+    .toc-toggle { left: 0; bottom: 0; width: 44px; height: 40px; }
 }
 
 /* 主视图调整，视图容器内管理显示 */
