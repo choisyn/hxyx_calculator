@@ -1,0 +1,19 @@
+# Server configuration
+server:
+  # HTTP listen address
+  addr: ":8080"
+
+# Database configuration (MySQL)
+database:
+  # Hostname or IP
+  host: "127.0.0.1"
+  # Port number
+  port: 3306
+  # Database name
+  name: "hxyx_calculator"
+  # Username
+  user: "hxyx_calculator"
+  # Password
+  password: "TLcMHTyiJrZh88Ji"
+  # Additional DSN parameters
+  parameters: "charset=utf8mb4&parseTime=true&loc=Local"

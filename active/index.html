@@ -11,6 +11,12 @@
 <body>
     <div class="container">
         <h1>道具兑换计算器</h1>
+        <div class="active-tabs" role="tablist">
+            <button class="active-tab is-active" type="button" data-tab="calculator" aria-controls="calculator-view" aria-selected="true">计算器</button>
+            <button class="active-tab" type="button" data-tab="market" aria-controls="market-view" aria-selected="false">方案市场</button>
+        </div>
+
+        <section id="calculator-view" class="active-tab-panel" data-panel="calculator">
         <p style="color: red;">提示:本计算结果仅供参考，大活动的道具s、ss、sss出货比率为90:9:1，现实会有些许波动，请以实际情况为准！</p>
         
         <!-- 初始道具设置区 -->
@@ -36,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <pre style="color: rgb(52, 58, 122);font-size: 20px;">按键提示：
+        <pre class="tips">按键提示：
   “0”键为将该选项清0；
   第二个数字键为小活动的最大兑换量；
   第三个带“+”号的按钮为增加数量；
@@ -360,6 +366,44 @@
             <p id="bigEventResult"></p>
             <p id="smallEventResult"></p>
         </div>
+        </section>
+
+        <section id="market-view" class="active-tab-panel market-panel" data-panel="market" hidden>
+            <div class="exchange-section market-intro">
+                <h2>方案市场</h2>
+                <p class="market-hint">保存当前兑换方案，供其他用户查看。方案包含标题、说明、兑换数量与计算结果。</p>
+            </div>
+
+            <div class="exchange-section market-form">
+                <h2>发布方案</h2>
+                <div class="market-field">
+                    <label for="marketTitle">标题</label>
+                    <input id="marketTitle" type="text" maxlength="60" placeholder="例如：S/SS混合兑换方案">
+                </div>
+                <div class="market-field">
+                    <label for="marketDescription">说明</label>
+                    <textarea id="marketDescription" rows="3" maxlength="240" placeholder="补充说明你的思路或目标"></textarea>
+                </div>
+                <div class="market-field">
+                    <span class="market-label">计算结果保存范围</span>
+                    <div class="market-options">
+                        <label><input type="radio" name="marketSaveMode" value="big"> 只保存大活动</label>
+                        <label><input type="radio" name="marketSaveMode" value="small"> 只保存小活动</label>
+                        <label><input type="radio" name="marketSaveMode" value="both" checked> 大小都保存</label>
+                    </div>
+                </div>
+                <div class="market-actions">
+                    <button id="savePlanBtn" class="calculate-btn" type="button">保存到方案市场</button>
+                    <button id="refreshMarketBtn" class="reset-btn" type="button">刷新市场</button>
+                </div>
+                <div id="marketStatus" class="market-status" role="status"></div>
+            </div>
+
+            <div class="exchange-section market-list">
+                <h2>最新方案</h2>
+                <div id="marketList" class="market-grid"></div>
+            </div>
+        </section>
     </div>
     <script src="script.js"></script>
 </body>

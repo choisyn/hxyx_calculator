@@ -1,0 +1,19 @@
+# Server configuration
+server:
+  # HTTP listen address
+  addr: ":8080"
+
+# Database configuration (MySQL)
+database:
+  # Hostname or IP
+  host: "127.0.0.1"
+  # Port number
+  port: 3306
+  # Database name
+  name: "YOUR_DB_NAME"
+  # Username
+  user: "YOUR_DB_USER"
+  # Password (replace with real one)
+  password: "YOUR_DB_PASSWORD"
+  # Additional DSN parameters
+  parameters: "charset=utf8mb4&parseTime=true&loc=Local"
